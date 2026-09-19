@@ -1216,26 +1216,483 @@
       border: 1px solid var(--admin-border);
     }
 
-    /* RESPONSIVE */
-    @media (max-width: 1100px) {
-      .hero-case-study { grid-template-columns: 1fr; }
+    /* ==========================================================================
+       SISTEMA RESPONSIVO INTEGRAL (DESKTOP, TABLET & MOBILE)
+       ========================================================================== */
+    .header-main-row {
+      display: contents;
+    }
+
+    /* Tablets y Pantallas Medianas (<= 1024px) */
+    @media (max-width: 1024px) {
+      .tablet-header {
+        flex-direction: column;
+        align-items: stretch;
+        padding: 10px 16px 8px;
+        gap: 8px;
+      }
+      .header-main-row {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        width: 100%;
+      }
+      .tablet-nav {
+        width: 100%;
+        display: flex !important;
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+        scrollbar-width: none;
+        padding: 4px 2px;
+        gap: 6px;
+      }
+      .tablet-nav::-webkit-scrollbar {
+        display: none;
+      }
+      .nav-tab-btn {
+        flex-shrink: 0;
+        padding: 8px 14px;
+        font-size: 0.82rem;
+      }
+      .hero-case-study { grid-template-columns: 1fr; gap: 24px; }
       .poster-showcase-container { grid-template-columns: 1fr; }
       .origin-grid { grid-template-columns: repeat(2, 1fr); }
+      .origin-detail-expanded { grid-template-columns: 1fr !important; gap: 24px !important; }
       .kits-section-grid { grid-template-columns: 1fr; }
       .kit-display-card { grid-column: span 1 !important; }
+      .method-showcase-box { grid-template-columns: 1fr !important; gap: 24px !important; }
+      #subtab-cacao { grid-template-columns: 1fr !important; }
       .blog-grid-view { grid-template-columns: repeat(2, 1fr); }
       .conversion-layout { grid-template-columns: 1fr; }
       .admin-kpis-grid { grid-template-columns: repeat(2, 1fr); }
       .kanban-grid { grid-template-columns: 1fr; }
     }
+
+    /* Teléfonos Móviles y Pantallas Pequeñas (<= 768px) */
     @media (max-width: 768px) {
-      .tablet-nav { display: none; }
-      .hero-case-title { font-size: 2.2rem; }
-      .origin-grid { grid-template-columns: 1fr; }
-      .blog-grid-view { grid-template-columns: 1fr; }
-      .screen-container { padding: 20px 16px 80px; }
-      .admin-kpis-grid { grid-template-columns: 1fr; }
-      .admin-form-grid { grid-template-columns: 1fr; }
+      /* Estructura Global */
+      body, #app-viewport {
+        overflow-x: hidden;
+        max-width: 100vw;
+      }
+      .screen-container {
+        padding: 18px 14px 75px;
+      }
+      .screen-header-title {
+        margin-bottom: 22px;
+      }
+      .screen-header-title h2 {
+        font-size: 1.65rem;
+      }
+      .screen-header-title p {
+        font-size: 0.88rem;
+        line-height: 1.5;
+      }
+
+      /* Hero Inicio */
+      .hero-case-study {
+        padding: 20px 16px;
+        border-radius: var(--radius-md);
+        margin-bottom: 20px;
+      }
+      .hero-case-title {
+        font-size: 1.65rem;
+        line-height: 1.22;
+        margin-bottom: 12px;
+      }
+      .hero-case-desc {
+        font-size: 0.88rem;
+        line-height: 1.55;
+        margin-bottom: 18px;
+      }
+      .hero-metrics-strip {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 8px;
+        margin-bottom: 18px;
+      }
+      .hero-metric-item {
+        padding: 10px 4px;
+      }
+      .hero-metric-item .val {
+        font-size: 1.15rem;
+      }
+      .hero-metric-item .lbl {
+        font-size: 0.62rem;
+      }
+      .hero-visual-card {
+        height: 220px;
+      }
+      .hero-cta-btns {
+        display: flex;
+        flex-direction: column !important;
+        width: 100%;
+        gap: 8px !important;
+      }
+      .hero-cta-btns .touch-btn {
+        width: 100%;
+        justify-content: center;
+        text-align: center;
+      }
+
+      /* QR Banner Estático en Inicio */
+      .static-stand-qr-banner {
+        padding: 20px 14px !important;
+        margin: 20px 0 !important;
+        gap: 20px !important;
+        border-radius: var(--radius-md) !important;
+      }
+      .static-stand-qr-banner h3 {
+        font-size: 1.35rem !important;
+      }
+      .static-stand-qr-banner p {
+        font-size: 0.86rem !important;
+      }
+      .static-banner-actions {
+        display: flex;
+        flex-direction: column !important;
+        align-items: stretch !important;
+        gap: 10px !important;
+        width: 100%;
+      }
+      .static-banner-actions .touch-btn {
+        width: 100%;
+        justify-content: center;
+      }
+      .static-banner-actions span {
+        text-align: center;
+      }
+      .static-qr-dual-holder {
+        display: flex;
+        gap: 12px !important;
+        justify-content: center !important;
+        width: 100% !important;
+        flex-wrap: wrap !important;
+      }
+      .static-qr-dual-holder > div {
+        padding: 14px 12px !important;
+        flex: 1 1 130px;
+        max-width: 160px;
+      }
+      #staticStandQrContainer, #staticStandQrContainer2 {
+        width: 120px !important;
+        height: 120px !important;
+      }
+      #staticStandQrContainer canvas, #staticStandQrContainer img,
+      #staticStandQrContainer2 canvas, #staticStandQrContainer2 img {
+        width: 110px !important;
+        height: 110px !important;
+      }
+
+      /* Pilares en Home */
+      .home-pillars-grid {
+        grid-template-columns: 1fr !important;
+        gap: 14px;
+      }
+      .pillar-card {
+        padding: 18px;
+      }
+
+      /* Orígenes */
+      .poster-showcase-container {
+        padding: 18px 14px !important;
+        gap: 18px !important;
+        border-radius: var(--radius-md) !important;
+      }
+      .poster-img-wrap {
+        max-height: 260px !important;
+      }
+      .poster-showcase-container h3 {
+        font-size: 1.45rem !important;
+      }
+      .origin-grid {
+        grid-template-columns: 1fr !important;
+        gap: 14px;
+      }
+      .origin-card-img-wrap {
+        height: 180px;
+      }
+      .origin-detail-expanded {
+        grid-template-columns: 1fr !important;
+        padding: 20px 14px !important;
+        gap: 20px !important;
+        border-radius: var(--radius-md) !important;
+      }
+      .expanded-image-box {
+        height: 220px !important;
+      }
+      .origin-detail-expanded h2 {
+        font-size: 1.55rem !important;
+      }
+      #btnQuickAddOrigin {
+        width: 100%;
+        justify-content: center;
+      }
+
+      /* Kits & Club */
+      .kits-section-grid {
+        grid-template-columns: 1fr !important;
+        gap: 20px !important;
+      }
+      .kit-img-box {
+        height: 200px !important;
+      }
+      .kit-info-body {
+        padding: 20px 16px !important;
+      }
+      .kit-info-body button.touch-btn {
+        width: 100%;
+        justify-content: center;
+      }
+
+      /* Métodos */
+      .methods-tab-nav {
+        gap: 6px !important;
+        overflow-x: auto;
+        justify-content: flex-start !important;
+        -webkit-overflow-scrolling: touch;
+        padding-bottom: 6px;
+        flex-wrap: nowrap !important;
+      }
+      .method-btn {
+        padding: 9px 15px !important;
+        font-size: 0.82rem !important;
+        flex-shrink: 0;
+      }
+      .method-showcase-box {
+        grid-template-columns: 1fr !important;
+        padding: 20px 14px !important;
+        gap: 20px !important;
+        border-radius: var(--radius-md) !important;
+      }
+      .method-showcase-box img {
+        height: 200px !important;
+        border-radius: var(--radius-sm);
+        object-fit: cover;
+      }
+      .method-showcase-box button.touch-btn {
+        width: 100%;
+        justify-content: center;
+      }
+
+      /* Cacao & Joyeros */
+      .cacao-art-tabs {
+        flex-direction: column !important;
+        gap: 8px !important;
+        width: 100%;
+      }
+      .cacao-art-btn {
+        width: 100% !important;
+        text-align: center;
+        padding: 10px 14px !important;
+        font-size: 0.85rem !important;
+      }
+      #subtab-cacao {
+        grid-template-columns: 1fr !important;
+        padding: 20px 14px !important;
+        border-radius: var(--radius-md) !important;
+        gap: 20px !important;
+      }
+      #subtab-cacao h3 {
+        font-size: 1.55rem !important;
+      }
+      #subtab-cacao button.touch-btn {
+        width: 100%;
+        justify-content: center;
+      }
+      .cacao-slider-box > div:first-child {
+        height: 250px !important;
+      }
+      #subtab-joyeros {
+        grid-template-columns: 1fr !important;
+        gap: 16px !important;
+      }
+      #subtab-joyeros img {
+        height: 200px !important;
+      }
+
+      /* Blog */
+      .blog-filters-bar {
+        gap: 6px !important;
+        overflow-x: auto;
+        justify-content: flex-start !important;
+        -webkit-overflow-scrolling: touch;
+        padding-bottom: 6px;
+        margin-bottom: 20px;
+        flex-wrap: nowrap !important;
+      }
+      .blog-filter-pill {
+        padding: 7px 13px !important;
+        font-size: 0.78rem !important;
+        flex-shrink: 0;
+      }
+      .blog-grid-view {
+        grid-template-columns: 1fr !important;
+        gap: 18px !important;
+      }
+      .blog-card-thumb {
+        height: 180px !important;
+      }
+      .blog-card-content {
+        padding: 18px 16px !important;
+      }
+      .modal-overlay {
+        padding: 10px;
+      }
+      .modal-card {
+        border-radius: var(--radius-md) !important;
+        max-height: 94vh !important;
+      }
+      .modal-card video {
+        max-height: 220px !important;
+        width: 100%;
+      }
+
+      /* Menú & Checkout */
+      .conversion-layout {
+        grid-template-columns: 1fr !important;
+        gap: 20px !important;
+      }
+      .order-menu-panel {
+        padding: 20px 14px !important;
+        border-radius: var(--radius-md) !important;
+      }
+      .touch-order-item {
+        padding: 10px 12px !important;
+      }
+      .touch-order-item h5 {
+        font-size: 0.88rem !important;
+      }
+      .qr-live-box {
+        padding: 22px 14px !important;
+        position: static !important;
+        border-radius: var(--radius-md) !important;
+      }
+      .qr-canvas-holder {
+        min-width: unset !important;
+        min-height: unset !important;
+        padding: 8px !important;
+        width: 130px !important;
+        height: 130px !important;
+      }
+      .qr-canvas-holder canvas, .qr-canvas-holder img {
+        width: 110px !important;
+        height: 110px !important;
+      }
+      .checkout-phone-badges {
+        justify-content: center !important;
+      }
+      .checkout-qr-dual-holder {
+        gap: 10px !important;
+      }
+      .checkout-send-btns {
+        grid-template-columns: 1fr !important;
+        gap: 8px !important;
+      }
+      .checkout-send-btns .touch-btn {
+        width: 100%;
+        justify-content: center;
+      }
+
+      /* Admin / Backoffice */
+      #screen-admin {
+        padding: 16px 12px 80px !important;
+      }
+      .admin-top-bar {
+        flex-direction: column !important;
+        align-items: flex-start !important;
+        gap: 14px !important;
+      }
+      .admin-top-bar > div:last-child {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        gap: 8px;
+      }
+      .admin-top-bar .touch-btn {
+        width: 100%;
+        justify-content: center;
+      }
+      .admin-kpis-grid {
+        grid-template-columns: 1fr 1fr !important;
+        gap: 10px !important;
+      }
+      .admin-kpi-card {
+        padding: 14px 12px !important;
+      }
+      .admin-kpi-card .kpi-val {
+        font-size: 1.35rem !important;
+      }
+      .admin-subnav {
+        padding-bottom: 8px;
+        gap: 6px;
+        -webkit-overflow-scrolling: touch;
+        scrollbar-width: none;
+      }
+      .admin-subnav::-webkit-scrollbar {
+        display: none;
+      }
+      .admin-tab-btn {
+        padding: 8px 12px;
+        font-size: 0.78rem;
+        flex-shrink: 0;
+      }
+      .admin-table-card {
+        padding: 16px 10px !important;
+        border-radius: var(--radius-md) !important;
+        -webkit-overflow-scrolling: touch;
+      }
+      .admin-table {
+        min-width: 540px;
+        font-size: 0.8rem;
+      }
+      .kanban-grid {
+        grid-template-columns: 1fr !important;
+        gap: 12px;
+      }
+      .admin-form-grid {
+        grid-template-columns: 1fr !important;
+        gap: 10px;
+      }
+    }
+
+    /* Teléfonos Compactos (<= 480px) */
+    @media (max-width: 480px) {
+      .brand-logo-badge {
+        width: 36px;
+        height: 36px;
+        font-size: 1.05rem;
+      }
+      .brand-titles h1 {
+        font-size: 1.05rem;
+      }
+      .brand-titles span {
+        font-size: 0.62rem;
+        max-width: 160px;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+      }
+      .btn-admin-toggle {
+        padding: 6px 10px;
+        font-size: 0.74rem;
+      }
+      .btn-fs {
+        width: 32px;
+        height: 32px;
+        font-size: 0.95rem;
+      }
+      .admin-kpis-grid {
+        grid-template-columns: 1fr !important;
+      }
+      .hero-metrics-strip {
+        gap: 6px;
+      }
+      .hero-metric-item .val {
+        font-size: 1.05rem;
+      }
+      .hero-metric-item .lbl {
+        font-size: 0.58rem;
+      }
     }
   </style>
 </head>
@@ -1245,11 +1702,23 @@
     
     <!-- HEADER CON NAVEGACIÓN Y ACCESO ADMINISTRATIVO -->
     <header class="tablet-header">
-      <div class="brand-group" onclick="showScreen('attract')">
-        <div class="brand-logo-badge">OA</div>
-        <div class="brand-titles">
-          <h1>ORIGEN & ALQUIMIA</h1>
-          <span>Cafés de Especialidad, Cacao & Bitácora Sensorial</span>
+      <div class="header-main-row">
+        <div class="brand-group" onclick="showScreen('attract')">
+          <div class="brand-logo-badge">OA</div>
+          <div class="brand-titles">
+            <h1>ORIGEN & ALQUIMIA</h1>
+            <span>Cafés de Especialidad, Cacao & Bitácora Sensorial</span>
+          </div>
+        </div>
+
+        <!-- ACCIONES: ACCESO BACKOFFICE Y FULLSCREEN -->
+        <div class="header-actions">
+          <button class="btn-admin-toggle" id="btnAdminAccess" onclick="openAdminPinModal()" title="Acceso al Backoffice Operativo y Contable">
+            <span>🔐</span> <span>Backoffice</span>
+          </button>
+          <button class="btn-fs" onclick="toggleFullScreen()" title="Pantalla Completa">
+            ⛶
+          </button>
         </div>
       </div>
 
@@ -1264,6 +1733,9 @@
         <button class="nav-tab-btn" id="tab-kits" onclick="showScreen('kits')">
           <span>🪵</span> Kits Sensoriales
         </button>
+        <button class="nav-tab-btn" id="tab-club" onclick="showScreen('club')">
+          <span>🌱</span> <span id="clubNavLabel">Club de Origen</span>
+        </button>
         <button class="nav-tab-btn" id="tab-methods" onclick="showScreen('methods')">
           <span>⚗️</span> Métodos
         </button>
@@ -1277,16 +1749,6 @@
           <span>🛒</span> Menú & Pedidos
         </button>
       </nav>
-
-      <!-- ACCIONES: ACCESO BACKOFFICE Y FULLSCREEN -->
-      <div class="header-actions">
-        <button class="btn-admin-toggle" id="btnAdminAccess" onclick="openAdminPinModal()" title="Acceso al Backoffice Operativo y Contable">
-          <span>🔐</span> <span>Backoffice</span>
-        </button>
-        <button class="btn-fs" onclick="toggleFullScreen()" title="Pantalla Completa">
-          ⛶
-        </button>
-      </div>
     </header>
 
     <!-- ============================================================ -->
@@ -1323,9 +1785,12 @@
             </div>
           </div>
 
-          <div style="display: flex; gap: 12px; flex-wrap: wrap;">
+          <div class="hero-cta-btns" style="display: flex; gap: 12px; flex-wrap: wrap;">
             <button class="touch-btn touch-btn-primary" onclick="showScreen('kits')">
               <span>🪵 Explorar Kits Sensoriales</span> <span>➔</span>
+            </button>
+            <button class="touch-btn touch-btn-secondary" onclick="showScreen('club')">
+              <span>🌱 Club Ruta de Origen ($32k/mes)</span>
             </button>
             <button class="touch-btn touch-btn-secondary" onclick="showScreen('blog')">
               <span>📖 Leer Memorias del Stand en el Blog</span>
@@ -1338,6 +1803,54 @@
           <div class="hero-visual-overlay">
             <h4 style="color:#FFF; font-size:1.2rem;">Feria del Queso & Café • Parque Lourdes</h4>
             <p style="font-size:0.85rem; opacity:0.9;">Barra de métodos en vivo, cata de aromas y repisas en madera noble.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- QR ESTÁTICO DE PEDIDOS DIRECTOS EN FERIA (WHATSAPP) -->
+      <div class="static-stand-qr-banner" style="background:#FFF; border:1px solid var(--c-border); border-radius:var(--radius-lg); padding:28px 36px; margin:28px 0; box-shadow:var(--shadow-sm); display:flex; align-items:center; justify-content:space-between; gap:28px; flex-wrap:wrap;">
+        <div style="flex:1; min-width:280px;">
+          <div style="background:#E8F5E9; color:#2E7D32; padding:5px 14px; border-radius:var(--radius-full); font-size:0.82rem; font-weight:800; display:inline-flex; align-items:center; gap:6px; margin-bottom:10px;">
+            <span>💬</span> Pedidos Rápidos en Feria • WhatsApp Oficial
+          </div>
+          <h3 style="font-size:1.65rem; margin-bottom:8px; color:var(--c-espresso);">
+            ¿Estás en el stand? Escanea y pide directo
+          </h3>
+          <p style="font-size:0.92rem; color:var(--c-text-muted); line-height:1.5; margin-bottom:16px;">
+            Apunta la cámara de tu celular o Google Lens a cualquiera de estos códigos QR para abrir WhatsApp sin registrarte ni armar carrito. Chatea al instante con el barista en barra.
+          </p>
+          <div class="static-banner-actions" style="display:flex; align-items:center; gap:12px; flex-wrap:wrap;">
+            <button class="touch-btn touch-btn-primary" onclick="openStaticWhatsApp(1)" style="padding:10px 20px;">
+              <span>📲</span> WhatsApp 1
+            </button>
+            <span style="font-size:0.88rem; font-weight:800; color:var(--c-espresso); background:var(--c-surface-elevated); padding:8px 14px; border-radius:var(--radius-full); border:1px solid var(--c-border);">
+              +57 301 464 4983
+            </span>
+            <button class="touch-btn touch-btn-secondary" onclick="openStaticWhatsApp(2)" style="padding:10px 20px;">
+              <span>📲</span> WhatsApp 2
+            </button>
+            <span style="font-size:0.88rem; font-weight:800; color:var(--c-espresso); background:var(--c-surface-elevated); padding:8px 14px; border-radius:var(--radius-full); border:1px solid var(--c-border);">
+              +57 302 319 1311
+            </span>
+          </div>
+        </div>
+
+        <div class="static-qr-dual-holder" style="display:flex; gap:20px; flex-wrap:wrap; align-items:flex-start;">
+          <!-- QR Número 1 -->
+          <div style="display:flex; flex-direction:column; align-items:center; background:var(--c-surface-elevated); padding:18px 22px; border-radius:var(--radius-md); border:1px solid var(--c-border);">
+            <div id="staticStandQrContainer" style="width:140px; height:140px; display:flex; align-items:center; justify-content:center; background:#FFF; padding:6px; border-radius:var(--radius-sm); box-shadow:0 2px 8px rgba(0,0,0,0.06);">
+            </div>
+            <span style="margin-top:8px; font-size:0.72rem; font-weight:800; color:var(--c-cacao); text-transform:uppercase; letter-spacing:0.04em;">
+              301 464 4983
+            </span>
+          </div>
+          <!-- QR Número 2 -->
+          <div style="display:flex; flex-direction:column; align-items:center; background:var(--c-surface-elevated); padding:18px 22px; border-radius:var(--radius-md); border:1px solid var(--c-border);">
+            <div id="staticStandQrContainer2" style="width:140px; height:140px; display:flex; align-items:center; justify-content:center; background:#FFF; padding:6px; border-radius:var(--radius-sm); box-shadow:0 2px 8px rgba(0,0,0,0.06);">
+            </div>
+            <span style="margin-top:8px; font-size:0.72rem; font-weight:800; color:var(--c-cacao); text-transform:uppercase; letter-spacing:0.04em;">
+              302 319 1311
+            </span>
           </div>
         </div>
       </div>
@@ -1617,6 +2130,107 @@
     </section>
 
     <!-- ============================================================ -->
+    <!-- PANTALLA CLUB: CLUB RUTA DE ORIGEN (SUSCRIPCIÓN MENSUAL) -->
+    <!-- ============================================================ -->
+    <section id="screen-club" class="screen-container">
+      <div class="screen-header-title">
+        <h2 id="clubScreenTitle">Club Ruta de Origen</h2>
+        <p>Tu alacena nunca más sin café de especialidad recién tostado. Suscripción mensual con entrega a domicilio en Bogotá, café de origen rotativo y el mejor beneficio frente a compra suelta.</p>
+      </div>
+
+      <div class="kits-section-grid" style="grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));">
+        
+        <!-- PLAN 1: EXPLORADOR -->
+        <div class="kit-display-card">
+          <span class="kit-tag-banner">1 Libra Mensual</span>
+          <div class="kit-img-box">
+            <img src="kitcafes.png" alt="Plan Explorador" onerror="this.src='reserva de la granja.jpeg'" />
+          </div>
+          <div class="kit-info-body">
+            <div>
+              <div class="kit-price-row">
+                <span class="kit-price-val">$32.000</span>
+                <span class="kit-discount-pill">/ mes • Ahorro 30%</span>
+              </div>
+              <h3 style="font-size:1.45rem; margin-bottom:6px;">Plan Explorador</h3>
+              <p style="font-size:0.84rem; color:var(--c-text-muted); line-height:1.4; margin-bottom:12px;">
+                1 libra (500g) de café de especialidad recién tostado con origen rotativo mensual entregada directo a tu puerta en Bogotá.
+              </p>
+              
+              <ul class="kit-includes-list">
+                <li><span>☕</span> <strong>1 Libra de Café de Origen (500g):</strong> En grano entero o molido a la medida para tu cafetera.</li>
+                <li><span>🔄</span> <strong>Origen Rotativo Mensual:</strong> Rota mes a mes entre el jazmín y manzana verde de Cucutilla (1.700 msnm), el chocolate amargo y panela de Boyacá, los frutos amarillos de Caicedonia y los suelos volcánicos de Manizales.</li>
+                <li><span>📜</span> <strong>Ficha de cata barista</strong> y notas sensoriales coleccionables con cada entrega.</li>
+              </ul>
+            </div>
+            <button class="touch-btn touch-btn-primary" onclick="subscribeClub('Explorador')">
+              📲 Suscribirme al Plan Explorador ($32k/mes)
+            </button>
+          </div>
+        </div>
+
+        <!-- PLAN 2: RITUAL COMPLETO -->
+        <div class="kit-display-card" style="border:2px solid var(--c-cacao);">
+          <span class="kit-tag-banner" style="background:var(--c-cacao);">Café + Cacao Puro</span>
+          <div class="kit-img-box">
+            <img src="Gemini_Generated_Image_ (13).png" alt="Plan Ritual Completo" onerror="this.src='kitcafes2.png'" />
+          </div>
+          <div class="kit-info-body">
+            <div>
+              <div class="kit-price-row">
+                <span class="kit-price-val">$62.000</span>
+                <span class="kit-discount-pill">/ mes • Más Elegido</span>
+              </div>
+              <h3 style="font-size:1.45rem; margin-bottom:6px;">Plan Ritual Completo</h3>
+              <p style="font-size:0.84rem; color:var(--c-text-muted); line-height:1.4; margin-bottom:12px;">
+                La alquimia integral: café de especialidad de altura para tus mañanas y cacao 100% puro para tu energía y pre-entreno deportivo.
+              </p>
+              
+              <ul class="kit-includes-list">
+                <li><span>☕</span> <strong>1 Libra de Café de Origen (500g):</strong> Rota mensualmente entre Cucutilla, Boyacá, Caicedonia y Manizales.</li>
+                <li><span>🍫</span> <strong>1 Libra de Cacao San Cristóbal (500g):</strong> 100% orgánico puro sin azúcar de Samaná (Caldas), rico en teobromina para energía limpia sin taquicardia.</li>
+                <li><span>🔄</span> <strong>Rotación sensorial garantizada:</strong> Cada mes descubres notas de cata y aromas botánicos distintos.</li>
+              </ul>
+            </div>
+            <button class="touch-btn touch-btn-primary" onclick="subscribeClub('Ritual Completo')">
+              📲 Suscribirme a Ritual Completo ($62k/mes)
+            </button>
+          </div>
+        </div>
+
+        <!-- PLAN 3: CASA CAFETERA -->
+        <div class="kit-display-card">
+          <span class="kit-tag-banner">Experiencia Total</span>
+          <div class="kit-img-box">
+            <img src="kitamor 2.png" alt="Plan Casa Cafetera" onerror="this.src='kitamor1.jpg'" />
+          </div>
+          <div class="kit-info-body">
+            <div>
+              <div class="kit-price-row">
+                <span class="kit-price-val">$89.000</span>
+                <span class="kit-discount-pill">/ mes • Edición VIP</span>
+              </div>
+              <h3 style="font-size:1.45rem; margin-bottom:6px;">Plan Casa Cafetera</h3>
+              <p style="font-size:0.84rem; color:var(--c-text-muted); line-height:1.4; margin-bottom:12px;">
+                Para hogares y salas de alta exigencia: café, cacao y un accesorio artesanal rotativo cada tres meses.
+              </p>
+              
+              <ul class="kit-includes-list">
+                <li><span>☕</span> <strong>1 Libra de Café de Especialidad:</strong> Rota mensualmente por nuestras 4 cordilleras.</li>
+                <li><span>🍫</span> <strong>1 Libra de Cacao Criollo Puro:</strong> Fino de aroma de Samaná (500g) sin azúcar.</li>
+                <li><span>🎁</span> <strong>Accesorio Trimestral Rotativo:</strong> Cada 3 meses recibes una pieza artesanal exclusiva (set de pocillos doble pared o joyero en madera noble pintado a mano por artesanos).</li>
+              </ul>
+            </div>
+            <button class="touch-btn touch-btn-primary" onclick="subscribeClub('Casa Cafetera')">
+              📲 Suscribirme a Casa Cafetera ($89k/mes)
+            </button>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ============================================================ -->
     <!-- PANTALLA 4: MÉTODOS DE EXTRACCIÓN -->
     <!-- ============================================================ -->
     <section id="screen-methods" class="screen-container">
@@ -1675,8 +2289,33 @@
       </div>
 
       <div id="subtab-cacao" style="background:#FFF; padding:36px; border-radius:var(--radius-lg); border:1px solid var(--c-border); display:grid; grid-template-columns:1fr 1fr; gap:36px; align-items:center;">
-        <div style="height:360px; border-radius:var(--radius-md); overflow:hidden;">
-          <img src="Gemini_Generated_Image_ (13).png" alt="Cacao San Cristóbal" style="width:100%; height:100%; object-fit:cover;" />
+        <!-- CARRUSEL DE SLIDES: LA VERDAD DEL CACAO -->
+        <div class="cacao-slider-box" style="display:flex; flex-direction:column; gap:12px;">
+          <div style="position:relative; width:100%; height:320px; border-radius:var(--radius-md); overflow:hidden; background:#1A1310; border:1px solid var(--c-border); display:flex; align-items:center; justify-content:center; box-shadow:var(--shadow-sm);">
+            <img id="cacaoSlideImg" src="verdadcacao.png" alt="Slide La Verdad del Cacao" style="width:100%; height:100%; object-fit:contain; transition:opacity 0.25s ease;" />
+            
+            <!-- Controles de Navegación -->
+            <button type="button" onclick="prevCacaoSlide()" style="position:absolute; left:10px; top:50%; transform:translateY(-50%); background:rgba(36,22,17,0.85); color:#FFF; border:1px solid rgba(255,255,255,0.25); width:38px; height:38px; border-radius:50%; cursor:pointer; font-size:1.2rem; display:flex; align-items:center; justify-content:center; z-index:3; transition:var(--transition);" title="Slide anterior">‹</button>
+            <button type="button" onclick="nextCacaoSlide()" style="position:absolute; right:10px; top:50%; transform:translateY(-50%); background:rgba(36,22,17,0.85); color:#FFF; border:1px solid rgba(255,255,255,0.25); width:38px; height:38px; border-radius:50%; cursor:pointer; font-size:1.2rem; display:flex; align-items:center; justify-content:center; z-index:3; transition:var(--transition);" title="Slide siguiente">›</button>
+            
+            <div id="cacaoSlideCounter" style="position:absolute; bottom:10px; left:12px; background:rgba(0,0,0,0.7); color:#FFF; padding:4px 10px; border-radius:var(--radius-full); font-size:0.75rem; font-weight:800; letter-spacing:0.04em;">
+              Slide 1 de 6
+            </div>
+            
+            <a href="Alquimia_del_Cacao.pdf" target="_blank" style="position:absolute; bottom:10px; right:12px; background:var(--c-cacao); color:#FFF; padding:4px 12px; border-radius:var(--radius-full); font-size:0.75rem; font-weight:800; text-decoration:none; display:inline-flex; align-items:center; gap:4px; box-shadow:0 2px 8px rgba(0,0,0,0.3);">
+              📄 Ver PDF
+            </a>
+          </div>
+
+          <!-- MINIATURAS NAVEGABLES EN TIRA HORIZONTAL -->
+          <div id="cacaoThumbnailsStrip" style="display:flex; gap:8px; overflow-x:auto; padding-bottom:4px;">
+            <img src="verdadcacao.png" class="cacao-thumb active" onclick="goToCacaoSlide(0)" alt="Slide 1" style="width:68px; height:42px; object-fit:cover; border-radius:6px; cursor:pointer; border:2px solid var(--c-cacao); transition:var(--transition);" />
+            <img src="laverdadcacao2.png" class="cacao-thumb" onclick="goToCacaoSlide(1)" alt="Slide 2" style="width:68px; height:42px; object-fit:cover; border-radius:6px; cursor:pointer; border:2px solid transparent; opacity:0.7; transition:var(--transition);" />
+            <img src="laverdadcacao3.png" class="cacao-thumb" onclick="goToCacaoSlide(2)" alt="Slide 3" style="width:68px; height:42px; object-fit:cover; border-radius:6px; cursor:pointer; border:2px solid transparent; opacity:0.7; transition:var(--transition);" />
+            <img src="laverdadcacao4.png" class="cacao-thumb" onclick="goToCacaoSlide(3)" alt="Slide 4" style="width:68px; height:42px; object-fit:cover; border-radius:6px; cursor:pointer; border:2px solid transparent; opacity:0.7; transition:var(--transition);" />
+            <img src="laverdadcacao5.png" class="cacao-thumb" onclick="goToCacaoSlide(4)" alt="Slide 5" style="width:68px; height:42px; object-fit:cover; border-radius:6px; cursor:pointer; border:2px solid transparent; opacity:0.7; transition:var(--transition);" />
+            <img src="laverdadcacao6.png" class="cacao-thumb" onclick="goToCacaoSlide(5)" alt="Slide 6" style="width:68px; height:42px; object-fit:cover; border-radius:6px; cursor:pointer; border:2px solid transparent; opacity:0.7; transition:var(--transition);" />
+          </div>
         </div>
         <div>
           <span style="font-size:0.8rem; font-weight:800; color:var(--c-cacao); text-transform:uppercase;">Samaná, Caldas</span>
@@ -1818,7 +2457,7 @@
             </div>
             <h4>La Teobromina del Cacao: Energía limpia y enfoque sin ansiedad</h4>
             <p>Por qué el cacao puro de Samaná estimula la circulación y libera serotonina sin provocar el crash de las bebidas energéticas.</p>
-            <div class="blog-read-cta">Descubrir Ciencia ➔</div>
+            <div class="blog-read-cta">Ver Video & Ciencia ➔</div>
           </div>
         </article>
 
@@ -1836,6 +2475,23 @@
             <h4>Guardianes Alados: El Toche y el Turpial como bioindicadores</h4>
             <p>Por qué estas hermosas aves solo habitan en cafetales con sombrío nativo y cómo garantizan un café libre de químicos.</p>
             <div class="blog-read-cta">Leer Más ➔</div>
+          </div>
+        </article>
+
+        <!-- ARTÍCULO 7: CACAO & AFECTO -->
+        <article class="blog-card-item" data-cat="curiosidades" onclick="openBlogModal(7)">
+          <div class="blog-card-thumb">
+            <span class="blog-category-chip">💡 Datos Curiosos</span>
+            <img src="laverdadcacao2.png" alt="Alquimia del Cacao" />
+          </div>
+          <div class="blog-card-content">
+            <div class="blog-card-meta">
+              <span>Tradición Ancestral</span>
+              <span>Lectura: 3 min</span>
+            </div>
+            <h4>Alquimia del Cacao & Afecto: El ritual del chocolate puro</h4>
+            <p>Descubre el video sobre el cacao criollo de Samaná y cómo sus compuestos naturales nutren el bienestar emocional y la conexión.</p>
+            <div class="blog-read-cta">Ver Video & Historia ➔</div>
           </div>
         </article>
 
@@ -1938,6 +2594,19 @@
 
           <div class="touch-order-item">
             <div>
+              <h5>Pico Diamante Cucutilla (500g)</h5>
+              <strong style="color:var(--c-espresso);">$50.000 COP</strong>
+              <span class="item-stock-tag ok" id="stock-tag-bag-diamante-500">Stock: 12</span>
+            </div>
+            <div class="qty-counter-touch">
+              <button class="btn-qty" onclick="modifyItem('bag-diamante-500', -1)">-</button>
+              <span class="qty-num" id="qty-bag-diamante-500">0</span>
+              <button class="btn-qty" onclick="modifyItem('bag-diamante-500', 1)">+</button>
+            </div>
+          </div>
+
+          <div class="touch-order-item">
+            <div>
               <h5>Reserva de la Granja Boyacá (340g)</h5>
               <strong style="color:var(--c-espresso);">$35.000 COP</strong>
               <span class="item-stock-tag ok" id="stock-tag-bag-granja-340">Stock: 30</span>
@@ -2019,14 +2688,30 @@
 
         <!-- PANEL DE CHECKOUT CON QR -->
         <div class="qr-live-box">
-          <div style="background:#E8F5E9; color:#2E7D32; padding:6px 14px; border-radius:var(--radius-full); font-size:0.86rem; font-weight:800; display:inline-block; margin-bottom:12px;">
-            💬 WhatsApp: +57 302 319 1311
+          <div class="checkout-phone-badges" style="display:flex; gap:8px; flex-wrap:wrap; margin-bottom:12px;">
+            <div style="background:#E8F5E9; color:#2E7D32; padding:6px 14px; border-radius:var(--radius-full); font-size:0.82rem; font-weight:800; display:inline-block;" id="orderWhatsAppLabel">
+              💬 WhatsApp 1: +57 301 464 4983
+            </div>
+            <div style="background:#E3F2FD; color:#1565C0; padding:6px 14px; border-radius:var(--radius-full); font-size:0.82rem; font-weight:800; display:inline-block;">
+              💬 WhatsApp 2: +57 302 319 1311
+            </div>
           </div>
           <h3>Escanea tu Pedido QR</h3>
-          <p style="font-size:0.84rem; color:var(--c-text-muted); margin-bottom:14px;">Compatible con Android (Google Lens / Cámara) y iPhone.</p>
+          <p style="font-size:0.84rem; color:var(--c-text-muted); margin-bottom:14px;">Compatible con Android (Google Lens / Cámara) y iPhone. Elige cualquiera de los dos números.</p>
 
-          <div class="qr-canvas-holder">
-            <div id="liveQrContainer"></div>
+          <div class="checkout-qr-dual-holder" style="display:flex; gap:16px; justify-content:center; flex-wrap:wrap; margin-bottom:16px;">
+            <div style="display:flex; flex-direction:column; align-items:center;">
+              <div class="qr-canvas-holder" style="margin-bottom:6px;">
+                <div id="liveQrContainer"></div>
+              </div>
+              <span style="font-size:0.72rem; font-weight:800; color:var(--c-cacao); text-transform:uppercase;">301 464 4983</span>
+            </div>
+            <div style="display:flex; flex-direction:column; align-items:center;">
+              <div class="qr-canvas-holder" style="margin-bottom:6px;">
+                <div id="liveQrContainer2"></div>
+              </div>
+              <span style="font-size:0.72rem; font-weight:800; color:var(--c-cacao); text-transform:uppercase;">302 319 1311</span>
+            </div>
           </div>
 
           <div style="font-size:1.6rem; font-weight:900; color:var(--c-espresso); margin-bottom:16px;">
@@ -2034,11 +2719,16 @@
           </div>
 
           <div style="display:flex; flex-direction:column; gap:8px;">
-            <button class="touch-btn touch-btn-primary" onclick="openWhatsAppDirect()">
-              📲 Enviar Pedido por WhatsApp
-            </button>
+            <div class="checkout-send-btns" style="display:grid; grid-template-columns:1fr 1fr; gap:8px;">
+              <button class="touch-btn touch-btn-primary" onclick="openWhatsAppDirect(1)" style="font-size:0.82rem; padding:10px 6px;">
+                📲 Enviar a 301 464 4983
+              </button>
+              <button class="touch-btn touch-btn-secondary" onclick="openWhatsAppDirect(2)" style="font-size:0.82rem; padding:10px 6px; border-color:var(--c-cacao); color:var(--c-espresso);">
+                📲 Enviar a 302 319 1311
+              </button>
+            </div>
             <button class="touch-btn touch-btn-secondary" onclick="registerAndSimulateOrder()">
-              📦 Registrar en Sistema & Descontar Stock
+              📦 Registrar en Sistema &amp; Descontar Stock
             </button>
             <button class="touch-btn touch-btn-secondary" onclick="resetOrder()" style="font-size:0.85rem; padding:8px;">
               🔄 Reiniciar
@@ -2356,18 +3046,24 @@
     // ==========================================================================
     // 1. CONFIGURACIÓN Y ESTADO DE LA APLICACIÓN
     // ==========================================================================
-    const WHATSAPP_NUM = "573023191311";
+    const CLUB_NAME = "Club Ruta de Origen";
+    const WHATSAPP_NUM = "573014644983";
+    const WHATSAPP_NUM_2 = "573023191311";
     const ADMIN_PIN_DEFAULT = "1234";
 
     // BASE DE DATOS INICIAL CON PERSISTENCIA EN LOCALSTORAGE
     const DEFAULT_DATA = {
       inventory: {
+        "sub-explorador": { name: "Suscripción: Plan Explorador (1 lb)", cat: "Suscripción", stock: 50, min: 10, costMat: 18000, costPack: 3000, pvp: 32000 },
+        "sub-ritual": { name: "Suscripción: Plan Ritual Completo (Café + Cacao)", cat: "Suscripción", stock: 50, min: 10, costMat: 35000, costPack: 4000, pvp: 62000 },
+        "sub-casa": { name: "Suscripción: Plan Casa Cafetera (+ Accesorio)", cat: "Suscripción", stock: 30, min: 5, costMat: 52000, costPack: 5000, pvp: 89000 },
         "kit-barista-casa": { name: "Kit Barista en Casa", cat: "Kits", stock: 8, min: 3, costMat: 130000, costPack: 15000, pvp: 240000 },
         "kit-origen-dual": { name: "Kit Origen Dual & Madera", cat: "Kits", stock: 12, min: 4, costMat: 55000, costPack: 12000, pvp: 115000 },
         "kit-alquimia-ancestral": { name: "Kit Alquimia Ancestral", cat: "Kits", stock: 6, min: 3, costMat: 62000, costPack: 12000, pvp: 125000 },
         "kit-1-origenes": { name: "Kit Ruta de Orígenes & Repisa", cat: "Kits", stock: 5, min: 2, costMat: 155000, costPack: 20000, pvp: 295000 },
         "kit-3-master": { name: "Kit Master Barista Station", cat: "Kits", stock: 3, min: 2, costMat: 380000, costPack: 35000, pvp: 690000 },
         "bag-diamante-250": { name: "Café Pico Diamante (250g)", cat: "Café", stock: 25, min: 8, costMat: 14000, costPack: 3000, pvp: 30000 },
+        "bag-diamante-500": { name: "Café Pico Diamante (500g)", cat: "Café", stock: 12, min: 4, costMat: 25000, costPack: 4000, pvp: 50000 },
         "bag-granja-340": { name: "Reserva de la Granja (340g)", cat: "Café", stock: 30, min: 10, costMat: 16500, costPack: 3500, pvp: 35000 },
         "bag-koko-azul": { name: "Koko Eunice Azul (500g)", cat: "Café", stock: 18, min: 6, costMat: 21000, costPack: 4000, pvp: 40000 },
         "bag-manizales": { name: "Verde & Tostao Manizales (500g)", cat: "Café", stock: 20, min: 6, costMat: 19500, costPack: 4000, pvp: 37000 },
@@ -2407,7 +3103,15 @@
     function loadAppState() {
       const saved = localStorage.getItem("ORIGEN_ALQUIMIA_BACKOFFICE_V1");
       if (saved) {
-        try { return JSON.parse(saved); } catch(e) { console.warn("Error leyendo localstorage, usando defaults."); }
+        try {
+          const parsed = JSON.parse(saved);
+          if (parsed && parsed.inventory) {
+            parsed.inventory = Object.assign({}, DEFAULT_DATA.inventory, parsed.inventory);
+          }
+          return parsed;
+        } catch(e) {
+          console.warn("Error leyendo localstorage, usando defaults.");
+        }
       }
       return DEFAULT_DATA;
     }
@@ -2433,7 +3137,12 @@
       const navBtns = document.querySelectorAll(".nav-tab-btn");
       navBtns.forEach(b => b.classList.remove("active"));
       const activeNav = document.getElementById("tab-" + screenId);
-      if (activeNav) activeNav.classList.add("active");
+      if (activeNav) {
+        activeNav.classList.add("active");
+        try {
+          activeNav.scrollIntoView({ behavior: "smooth", block: "nearest", inline: "center" });
+        } catch(e) {}
+      }
 
       if (screenId === "conversion") {
         updateOrderSummaryAndQr();
@@ -2511,7 +3220,15 @@
         readTime: "Lectura: 4 min",
         img: "IMG-20260425-WA0000.jpg",
         body: `
+          <div style="margin-bottom:18px; border-radius:var(--radius-sm); overflow:hidden; background:#000;">
+            <video controls playsinline style="width:100%; max-height:360px; display:block;" poster="IMG-20260425-WA0000.jpg">
+              <source src="cafe_colombiano_jazmin.mp4" type="video/mp4">
+              <source src="El_Café_Colombiano_que_Sabe_a_Jazmín.mp4" type="video/mp4">
+              Tu navegador no soporta la reproducción de video.
+            </video>
+          </div>
           <p>En el municipio de Cucutilla, las noches heladas que descienden de los páramos ralentizan la maduración de la cereza arábica, permitiendo que la planta desarrolle una dulzura floral única que recuerda al jazmín fresco y la miel virgen.</p>
+          <br/>
           <p>La recolección manual es realizada grano a grano por familias caficultoras aliadas, garantizando cero defectos de pasilla.</p>
         `
       },
@@ -2522,7 +3239,17 @@
         readTime: "Lectura: 3 min",
         img: "Gemini_Generated_Image_ (13).png",
         body: `
+          <div style="margin-bottom:18px; border-radius:var(--radius-sm); overflow:hidden; background:#000;">
+            <video controls playsinline style="width:100%; max-height:360px; display:block;" poster="Gemini_Generated_Image_ (13).png">
+              <source src="energia_pura_cacao_organico.mp4" type="video/mp4">
+              <source src="Energía Pura_ Nutre Tu Ser con Cacao Orgánico.mp4" type="video/mp4">
+              Tu navegador no soporta la reproducción de video.
+            </video>
+          </div>
           <p>A diferencia de la cafeína, que estimula violentamente el sistema nervioso central, la <strong>teobromina</strong> presente en nuestro cacao fino 100% puro es un vasodilatador suave. Aumenta el flujo sanguíneo hacia el cerebro, brindando claridad cognitiva y bienestar prolongado sin producir nerviosismo ni taquicardia.</p>
+          <br/>
+          <h4 style="color:var(--c-espresso);">Energía Pura y Pre-entreno Deportivo</h4>
+          <p>El cacao criollo de Samaná (Caldas) nutre tu cuerpo de forma natural: rico en magnesio, flavonoides y teobromina, optimiza la oxigenación celular para entrenamientos de fondo, running o jornadas de concentración intensa sin pico glucémico.</p>
         `
       },
       6: {
@@ -2533,6 +3260,26 @@
         img: "infografia_cordilleras.jpg",
         body: `
           <p>El Toche y el Turpial no solo engalanan nuestros joyeros y pósters: son bioindicadores científicos estrictos. Jamás anidan en monocultivos expuestos al sol abrasador ni en fincas que usen pesticidas sintéticos. Su presencia certifica un ecosistema vivo de sombrío nativo y agua pura.</p>
+        `
+      },
+      7: {
+        cat: "💡 Datos Curiosos",
+        title: "Alquimia del Cacao & Afecto: El ritual del chocolate puro y las relaciones conscientes",
+        meta: "Tradición & Vínculos • Samaná, Caldas",
+        readTime: "Lectura: 3 min",
+        img: "laverdadcacao2.png",
+        body: `
+          <div style="margin-bottom:18px; border-radius:var(--radius-sm); overflow:hidden; background:#000;">
+            <video controls playsinline style="width:100%; max-height:360px; display:block;" poster="laverdadcacao2.png">
+              <source src="alquimia_del_afecto.mp4" type="video/mp4">
+              <source src="Alquimia_del_Afecto.mp4" type="video/mp4">
+              Tu navegador no soporta la reproducción de video.
+            </video>
+          </div>
+          <p>El cacao criollo de Samaná ha sido desde tiempos prehispánicos una medicina para el corazón y la vinculación afectiva. Su alta concentración de anandamida estimula estados de calma, empatía y enfoque emocional positivo.</p>
+          <br/>
+          <h4 style="color:var(--c-espresso);">Ritual de Degustación Consciente</h4>
+          <p>Disfrutar de una taza de cacao 100% puro sin azúcar en compañía de seres queridos transforma una pausa cotidiana en un acto de afecto y presencia compartida.</p>
         `
       }
     };
@@ -2564,7 +3311,12 @@
     }
 
     function closeBlogModal() {
-      document.getElementById("blogReaderModal").classList.remove("active");
+      const modal = document.getElementById("blogReaderModal");
+      if (modal) {
+        modal.classList.remove("active");
+        const videos = modal.querySelectorAll("video");
+        videos.forEach(v => { try { v.pause(); } catch(e){} });
+      }
     }
     function closeBlogModalOnOutside(e) {
       if (e.target.id === "blogReaderModal") closeBlogModal();
@@ -2644,33 +3396,61 @@
       return `https://wa.me/${WHATSAPP_NUM}?text=${encodeURIComponent(msg)}`;
     }
 
-    function drawStandQrCode(total) {
-      const container = document.getElementById("liveQrContainer");
-      if (!container) return;
-      container.innerHTML = "";
-
-      const targetUrl = buildWhatsAppUrl();
-
-      if (typeof QRCode !== "undefined") {
-        try {
-          new QRCode(container, {
-            text: targetUrl,
-            width: 210,
-            height: 210,
-            colorDark: "#241611",
-            colorLight: "#FFFFFF",
-            correctLevel: QRCode.CorrectLevel.M
-          });
-          return;
-        } catch(e) {}
+    function buildWhatsAppUrl2() {
+      // Misma lógica que buildWhatsAppUrl pero con WHATSAPP_NUM_2
+      let total = 0; let lines = [];
+      for (const [id, qty] of Object.entries(orderState)) {
+        const item = appState.inventory[id];
+        if (item && qty > 0) {
+          const sub = item.pvp * qty;
+          total += sub;
+          lines.push(`• ${qty}x ${item.name} ($${sub.toLocaleString("es-CO")})`);
+        }
       }
+      let msg = "";
+      if (lines.length > 0) {
+        msg = `☕ *PEDIDO - ORIGEN & ALQUIMIA (BOGOTÁ)*\n\n` +
+              lines.join("\n") +
+              `\n\n💰 *TOTAL:* $${total.toLocaleString("es-CO")} COP\n` +
+              `📍 Domicilio Bogotá. ¡Hola! ¿Me confirman disponibilidad y tiempo estimado de entrega?`;
+      } else {
+        msg = `¡Hola! Me comunico desde la plataforma de Origen & Alquimia. Quisiera consultar disponibilidad de los Kits Sensoriales, cafés de altura y cacao puro.`;
+      }
+      return `https://wa.me/${WHATSAPP_NUM_2}?text=${encodeURIComponent(msg)}`;
+    }
 
-      const img = document.createElement("img");
-      img.src = `https://api.qrserver.com/v1/create-qr-code/?size=210x210&margin=4&color=241611&data=${encodeURIComponent(targetUrl)}`;
-      img.style.width = "210px";
-      img.style.height = "210px";
-      img.style.display = "block";
-      container.appendChild(img);
+    function drawStandQrCode(total) {
+      const qrSize = 180;
+      const pairs = [
+        { id: "liveQrContainer", url: buildWhatsAppUrl() },
+        { id: "liveQrContainer2", url: buildWhatsAppUrl2() }
+      ];
+      pairs.forEach(({ id, url }) => {
+        const container = document.getElementById(id);
+        if (!container) return;
+        container.innerHTML = "";
+
+        if (typeof QRCode !== "undefined") {
+          try {
+            new QRCode(container, {
+              text: url,
+              width: qrSize,
+              height: qrSize,
+              colorDark: "#241611",
+              colorLight: "#FFFFFF",
+              correctLevel: QRCode.CorrectLevel.M
+            });
+            return;
+          } catch(e) {}
+        }
+
+        const img = document.createElement("img");
+        img.src = `https://api.qrserver.com/v1/create-qr-code/?size=${qrSize}x${qrSize}&margin=4&color=241611&data=${encodeURIComponent(url)}`;
+        img.style.width = qrSize + "px";
+        img.style.height = qrSize + "px";
+        img.style.display = "block";
+        container.appendChild(img);
+      });
     }
 
     function updateOrderSummaryAndQr() {
@@ -2683,8 +3463,9 @@
       drawStandQrCode(total);
     }
 
-    function openWhatsAppDirect() {
-      window.open(buildWhatsAppUrl(), "_blank");
+    function openWhatsAppDirect(numChoice = 1) {
+      const url = (numChoice === 2) ? buildWhatsAppUrl2() : buildWhatsAppUrl();
+      window.open(url, "_blank");
     }
 
     // REGISTRO DE PEDIDO Y DESCUENTO AUTOMÁTICO DE STOCK
@@ -2710,7 +3491,7 @@
       const newOrder = {
         id: "PED-" + (100 + appState.orders.length + 1),
         client: "Cliente Web / Mostrador",
-        phone: "+57 302 319 1311",
+        phone: "+57 301 464 4983 / +57 302 319 1311",
         address: "Por confirmar con cliente",
         items: orderItems.join(", "),
         total: total,
@@ -3089,11 +3870,123 @@
       document.getElementById("subtab-joyeros").style.display = (tab === "joyeros") ? "grid" : "none";
     }
 
+    // ==========================================================================
+    // 7. FUNCIONES DEL CLUB, QR ESTÁTICO DE STAND Y SLIDES DE CACAO
+    // ==========================================================================
+    function subscribeClub(planName) {
+      const msg = `Hola, quiero suscribirme al ${CLUB_NAME} - plan ${planName}`;
+      const url = `https://wa.me/${WHATSAPP_NUM}?text=${encodeURIComponent(msg)}`;
+      window.open(url, "_blank");
+    }
+
+    function openStaticWhatsApp(numChoice) {
+      const msg = "Hola, quiero hacer un pedido";
+      const num = (numChoice === 2) ? WHATSAPP_NUM_2 : WHATSAPP_NUM;
+      const url = `https://wa.me/${num}?text=${encodeURIComponent(msg)}`;
+      window.open(url, "_blank");
+    }
+
+    function drawStaticStandQrCode() {
+      const pairs = [
+        { id: "staticStandQrContainer", num: WHATSAPP_NUM },
+        { id: "staticStandQrContainer2", num: WHATSAPP_NUM_2 }
+      ];
+      pairs.forEach(({ id, num }) => {
+        const container = document.getElementById(id);
+        if (!container) return;
+        container.innerHTML = "";
+        const targetUrl = `https://wa.me/${num}?text=${encodeURIComponent("Hola, quiero hacer un pedido")}`;
+
+        if (typeof QRCode !== "undefined") {
+          try {
+            new QRCode(container, {
+              text: targetUrl,
+              width: 140,
+              height: 140,
+              colorDark: "#241611",
+              colorLight: "#FFFFFF",
+              correctLevel: QRCode.CorrectLevel.M
+            });
+            return;
+          } catch(e) {
+            console.warn("Error generando QR estático con QRCode.js", e);
+          }
+        }
+
+        const img = document.createElement("img");
+        img.src = `https://api.qrserver.com/v1/create-qr-code/?size=140x140&margin=2&color=241611&data=${encodeURIComponent(targetUrl)}`;
+        img.style.width = "140px";
+        img.style.height = "140px";
+        img.style.display = "block";
+        container.appendChild(img);
+      });
+    }
+
+    const CACAO_SLIDES = [
+      "verdadcacao.png",
+      "laverdadcacao2.png",
+      "laverdadcacao3.png",
+      "laverdadcacao4.png",
+      "laverdadcacao5.png",
+      "laverdadcacao6.png"
+    ];
+    let currentCacaoSlideIdx = 0;
+
+    function updateCacaoSlideDisplay() {
+      const imgEl = document.getElementById("cacaoSlideImg");
+      const counterEl = document.getElementById("cacaoSlideCounter");
+      if (imgEl) {
+        imgEl.style.opacity = "0.2";
+        setTimeout(() => {
+          imgEl.src = CACAO_SLIDES[currentCacaoSlideIdx];
+          imgEl.style.opacity = "1";
+        }, 100);
+      }
+      if (counterEl) {
+        counterEl.textContent = `Slide ${currentCacaoSlideIdx + 1} de ${CACAO_SLIDES.length}`;
+      }
+      const thumbs = document.querySelectorAll(".cacao-thumb");
+      thumbs.forEach((t, i) => {
+        if (i === currentCacaoSlideIdx) {
+          t.style.border = "2px solid var(--c-cacao)";
+          t.style.opacity = "1";
+        } else {
+          t.style.border = "2px solid transparent";
+          t.style.opacity = "0.6";
+        }
+      });
+    }
+
+    function nextCacaoSlide() {
+      currentCacaoSlideIdx = (currentCacaoSlideIdx + 1) % CACAO_SLIDES.length;
+      updateCacaoSlideDisplay();
+    }
+
+    function prevCacaoSlide() {
+      currentCacaoSlideIdx = (currentCacaoSlideIdx - 1 + CACAO_SLIDES.length) % CACAO_SLIDES.length;
+      updateCacaoSlideDisplay();
+    }
+
+    function goToCacaoSlide(idx) {
+      if (idx >= 0 && idx < CACAO_SLIDES.length) {
+        currentCacaoSlideIdx = idx;
+        updateCacaoSlideDisplay();
+      }
+    }
+
     // INICIALIZACIÓN
     window.addEventListener("DOMContentLoaded", () => {
       selectOrigin(0);
       updateOrderSummaryAndQr();
       updateMenuStockPills();
+      drawStaticStandQrCode();
+      updateCacaoSlideDisplay();
+
+      // Sincronizar etiquetas dinámicas con CLUB_NAME
+      const navLabel = document.getElementById("clubNavLabel");
+      if (navLabel) navLabel.textContent = CLUB_NAME;
+      const screenTitle = document.getElementById("clubScreenTitle");
+      if (screenTitle) screenTitle.textContent = CLUB_NAME;
     });
   </script>
 </body>

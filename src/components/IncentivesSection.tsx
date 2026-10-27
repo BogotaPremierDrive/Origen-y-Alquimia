@@ -17,42 +17,72 @@ export const IncentivesSection: React.FC<IncentivesSectionProps> = ({ passState,
   const referralCode = passState.referralCode || 'SHARK-OA89';
   const referralShareText = `¡Hola! Te invito a una taza gratis de cortesía de café de especialidad o cacao 100% puro en la barra de Nutrishark. Usa mi código de invitado: ${referralCode} para reclamarla en tu próximo entrenamiento. ☕🦈`;
 
-  const handleCopyLink = () => {
-    navigator.clipboard.writeText(referralShareText);
-    setCopiedLink(true);
-    setTimeout(() => setCopiedLink(false), 2000);
+  const handleCopyLink = async () => {
+    try {
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        await navigator.clipboard.writeText(referralShareText);
+      } else {
+        const input = document.createElement('input');
+        input.value = referralShareText;
+        document.body.appendChild(input);
+        input.select();
+        document.execCommand('copy');
+        document.body.removeChild(input);
+      }
+      setCopiedLink(true);
+      setTimeout(() => setCopiedLink(false), 2000);
+    } catch {
+      setCopiedLink(true);
+      setTimeout(() => setCopiedLink(false), 2000);
+    }
   };
 
   const handleShareWhatsApp = () => {
     const url = `https://wa.me/?text=${encodeURIComponent(referralShareText)}`;
-    window.open(url, '_blank');
+    try {
+      const a = document.createElement('a');
+      a.href = url;
+      a.target = '_blank';
+      a.rel = 'noopener noreferrer';
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
+    } catch {
+      window.location.href = url;
+    }
   };
 
   const handleSimulateReferral = () => {
     setReferredFriends(prev => prev + 1);
     onAddBonusCups(4);
     try {
-      confetti({
-        particleCount: 80,
-        spread: 70,
-        origin: { y: 0.7 },
-        colors: ['#10B981', '#D4AF37', '#F5E4A8'],
-      });
+      const confettiFn = (confetti as any)?.default || confetti;
+      if (typeof confettiFn === 'function') {
+        confettiFn({
+          particleCount: 80,
+          spread: 70,
+          origin: { y: 0.7 },
+          colors: ['#10B981', '#D4AF37', '#F5E4A8'],
+        });
+      }
     } catch {
-      // fallback
+      // safe fallback
     }
   };
 
   const handleClaimReward = (target: number) => {
     setClaimedRewards([...claimedRewards, target]);
     try {
-      confetti({
-        particleCount: 100,
-        spread: 80,
-        origin: { y: 0.5 },
-      });
+      const confettiFn = (confetti as any)?.default || confetti;
+      if (typeof confettiFn === 'function') {
+        confettiFn({
+          particleCount: 100,
+          spread: 80,
+          origin: { y: 0.5 },
+        });
+      }
     } catch {
-      // fallback
+      // safe fallback
     }
   };
 

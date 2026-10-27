@@ -83,7 +83,17 @@ export const TakeHomeShop: React.FC = () => {
 ¿Tienen stock disponible para entrega hoy en la barra?`;
     
     const url = `https://wa.me/${CONTACT_LINES[0].phone}?text=${encodeURIComponent(message)}`;
-    window.open(url, '_blank');
+    try {
+      const a = document.createElement('a');
+      a.href = url;
+      a.target = '_blank';
+      a.rel = 'noopener noreferrer';
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
+    } catch {
+      window.location.href = url;
+    }
     setTimeout(() => setOrderedProduct(null), 2500);
   };
 

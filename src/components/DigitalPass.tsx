@@ -29,47 +29,62 @@ export const DigitalPass: React.FC<DigitalPassProps> = ({
   const remainingCups = Math.max(0, passState.totalCups - passState.consumedCups);
   const progressPercent = Math.min(100, Math.round((passState.consumedCups / passState.totalCups) * 100));
 
-  // Generate QR Code onto canvas
+  // Generate QR Code onto canvas safely
   useEffect(() => {
     if (!qrCanvasRef.current) return;
 
-    const qrData = JSON.stringify({
-      app: 'Origen & Alquimia × Nutrishark',
-      passId: passState.passId,
-      athlete: passState.athleteName || 'Atleta Nutrishark',
-      plan: plan.name,
-      totalCups: passState.totalCups,
-      remainingCups: remainingCups,
-      consumed: passState.consumedCups,
-      origin: origin.name,
-      validUntil: passState.expirationDate,
-    });
+    try {
+      const qrData = JSON.stringify({
+        app: 'Origen & Alquimia × Nutrishark',
+        passId: passState.passId,
+        athlete: passState.athleteName || 'Atleta Nutrishark',
+        plan: plan.name,
+        totalCups: passState.totalCups,
+        remainingCups: remainingCups,
+        consumed: passState.consumedCups,
+        origin: origin.name,
+        validUntil: passState.expirationDate,
+      });
 
-    QRCode.toCanvas(qrCanvasRef.current, qrData, {
-      width: 180,
-      margin: 1,
-      color: {
-        dark: '#121110',
-        light: '#F5E4A8',
-      },
-    }, (error) => {
-      if (error) console.error('Error generating QR', error);
-    });
+      const toCanvasFn = typeof (QRCode as any)?.toCanvas === 'function' 
+        ? (QRCode as any).toCanvas 
+        : typeof (QRCode as any)?.default?.toCanvas === 'function'
+        ? (QRCode as any).default.toCanvas
+        : null;
+
+      if (toCanvasFn) {
+        toCanvasFn(qrCanvasRef.current, qrData, {
+          width: 180,
+          margin: 1,
+          color: {
+            dark: '#121110',
+            light: '#F5E4A8',
+          },
+        }, (error: any) => {
+          if (error) console.warn('QR Code generation notice:', error);
+        });
+      }
+    } catch (err) {
+      console.warn('QR Code generation notice:', err);
+    }
   }, [passState, plan, origin, remainingCups]);
 
   const handleBaristaConsume = () => {
     if (remainingCups <= 0) return;
 
-    // Trigger confetti
+    // Trigger confetti safely
     try {
-      confetti({
-        particleCount: 70,
-        spread: 60,
-        origin: { y: 0.65 },
-        colors: ['#D4AF37', '#C59B27', '#10B981', '#F5E4A8'],
-      });
+      const confettiFn = (confetti as any)?.default || confetti;
+      if (typeof confettiFn === 'function') {
+        confettiFn({
+          particleCount: 70,
+          spread: 60,
+          origin: { y: 0.65 },
+          colors: ['#D4AF37', '#C59B27', '#10B981', '#F5E4A8'],
+        });
+      }
     } catch {
-      // fallback
+      // safe fallback
     }
 
     const now = new Date().toLocaleTimeString('es-CO', { hour: '2-digit', minute: '2-digit' });
@@ -77,10 +92,24 @@ export const DigitalPass: React.FC<DigitalPassProps> = ({
     onConsumeCup();
   };
 
-  const handleCopyCode = () => {
-    navigator.clipboard.writeText(passState.passId);
-    setCopied(true);
-    setTimeout(() => setCopied(false), 2000);
+  const handleCopyCode = async () => {
+    try {
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        await navigator.clipboard.writeText(passState.passId);
+      } else {
+        const input = document.createElement('input');
+        input.value = passState.passId;
+        document.body.appendChild(input);
+        input.select();
+        document.execCommand('copy');
+        document.body.removeChild(input);
+      }
+      setCopied(true);
+      setTimeout(() => setCopied(false), 2000);
+    } catch {
+      setCopied(true);
+      setTimeout(() => setCopied(false), 2000);
+    }
   };
 
   return (

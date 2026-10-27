@@ -60,7 +60,17 @@ Quiero activar mi Pase de Café & Cacao en Nutrishark:
 ¡Quedo atento para validar en la barra de Nutrishark e iniciar mis tazas!`;
 
     const url = `https://wa.me/${contact.phone}?text=${encodeURIComponent(message)}`;
-    window.open(url, '_blank');
+    try {
+      const a = document.createElement('a');
+      a.href = url;
+      a.target = '_blank';
+      a.rel = 'noopener noreferrer';
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
+    } catch {
+      window.location.href = url;
+    }
   };
 
   return (

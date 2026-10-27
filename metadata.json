@@ -1,0 +1,8 @@
+{
+  "name": "Origen & Alquimia × Nutrishark",
+  "description": "Experiencia de café de especialidad, cacao ancestral 100% y suplementación funcional para atletas en Nutrishark. Elige tu plan, origen y extras, obtén tu pase QR y conéctate vía WhatsApp.",
+  "capabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ],
+  "permissions": []
+}

@@ -1,0 +1,90 @@
+@import "tailwindcss";
+
+@theme {
+  --color-charcoal-950: #0a0908;
+  --color-charcoal-900: #121110;
+  --color-charcoal-800: #1A1715;
+  --color-charcoal-700: #24201D;
+  --color-charcoal-600: #2D2723;
+  --color-charcoal-500: #433A34;
+  --color-charcoal-400: #685D54;
+
+  --color-gold-brass: #C59B27;
+  --color-gold-warm: #D4AF37;
+  --color-gold-light: #F5E4A8;
+  --color-gold-dark: #9A771A;
+
+  --color-terracotta: #8C3B2B;
+  --color-terracotta-dark: #6F2B1E;
+  --color-terracotta-light: #B25340;
+
+  --color-cream-50: #FAF8F5;
+  --color-cream-100: #F5F2EB;
+  --color-cream-200: #E8E1D3;
+  --color-cream-300: #D5CCB9;
+  --color-cream-muted: #9E978C;
+
+  --font-serif: "Playfair Display", Georgia, serif;
+  --font-sans: "Plus Jakarta Sans", system-ui, -apple-system, sans-serif;
+}
+
+body {
+  background-color: #121110;
+  color: #F5F2EB;
+  font-family: var(--font-sans);
+  overflow-x: hidden;
+  -webkit-tap-highlight-color: transparent;
+}
+
+/* Speakeasy subtle pattern */
+.bg-speakeasy-texture {
+  background-color: #121110;
+  background-image: 
+    radial-gradient(circle at 50% 0%, rgba(197, 155, 39, 0.08) 0%, transparent 60%),
+    radial-gradient(circle at 100% 100%, rgba(140, 59, 43, 0.06) 0%, transparent 50%),
+    radial-gradient(rgba(212, 175, 55, 0.03) 1px, transparent 0);
+  background-size: 100% 100%, 100% 100%, 28px 28px;
+}
+
+.gold-gradient-text {
+  background: linear-gradient(135deg, #FFF6D6 0%, #D4AF37 50%, #C59B27 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.gold-border {
+  border: 1px solid rgba(212, 175, 55, 0.22);
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.gold-border:hover {
+  border-color: rgba(212, 175, 55, 0.5);
+}
+
+.gold-divider {
+  height: 1px;
+  background: linear-gradient(90deg, transparent 0%, rgba(212, 175, 55, 0.35) 50%, transparent 100%);
+}
+
+.glass-dark {
+  background: rgba(26, 23, 21, 0.85);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+}
+
+/* Custom scrollbars */
+::-webkit-scrollbar {
+  width: 7px;
+  height: 7px;
+}
+::-webkit-scrollbar-track {
+  background: #121110;
+}
+::-webkit-scrollbar-thumb {
+  background: #2D2723;
+  border-radius: 4px;
+  border: 1px solid rgba(212, 175, 55, 0.2);
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #C59B27;
+}
